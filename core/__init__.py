@@ -1,0 +1,1 @@
+"""Blue Horseshoe — Core package."""
