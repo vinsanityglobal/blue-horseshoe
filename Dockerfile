@@ -12,8 +12,8 @@ COPY . .
 # Create artifact store directory
 RUN mkdir -p /tmp/bh_artifacts
 
-# Expose port
+# Expose default port (Railway overrides with $PORT)
 EXPOSE 8000
 
-# Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the application — use $PORT if set (Railway), else default to 8000
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
